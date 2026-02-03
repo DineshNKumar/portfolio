@@ -234,22 +234,112 @@ document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contactForm');
     
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            // Get form data
-            const formData = new FormData(contactForm);
-            const data = Object.fromEntries(formData);
+            // Get the submit button
+            const submitBtn = contactForm.querySelector('.btn-submit');
+            const originalBtnContent = submitBtn.innerHTML;
             
-            // Here you would normally send the data to a server
-            console.log('Form submitted:', data);
+            // Disable button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span>Sending...</span><i class="fas fa-spinner fa-spin"></i>';
             
-            // Show success message
-            alert('Thank you for your message! I will get back to you within 24 hours.');
-            
-            // Reset form
-            contactForm.reset();
+            try {
+                // Get form data
+                const formData = new FormData(contactForm);
+                const data = Object.fromEntries(formData);
+                
+                // Send to Google Sheets using analytics.js function
+                if (typeof window.submitContactForm === 'function') {
+                    await window.submitContactForm(data);
+                }
+                
+                // Show success message
+                showSuccessMessage();
+                
+                // Reset form
+                contactForm.reset();
+                
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                showErrorMessage();
+            } finally {
+                // Re-enable button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnContent;
+            }
         });
+    }
+    
+    // Show success message
+    function showSuccessMessage() {
+        const message = document.createElement('div');
+        message.className = 'form-message success-message';
+        message.innerHTML = `
+            <div class="message-content">
+                <i class="fas fa-check-circle"></i>
+                <div>
+                    <h4>Message Sent Successfully!</h4>
+                    <p>Thank you for reaching out! I'll get back to you within 24 hours.</p>
+                </div>
+            </div>
+        `;
+        
+        // Insert message above the form
+        const formWrapper = document.querySelector('.contact-form-wrapper');
+        if (formWrapper) {
+            // Remove any existing messages
+            const existingMessages = formWrapper.querySelectorAll('.form-message');
+            existingMessages.forEach(msg => msg.remove());
+            
+            // Insert new message
+            formWrapper.insertBefore(message, formWrapper.firstChild);
+            
+            // Scroll to message
+            message.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            // Auto-remove after 8 seconds
+            setTimeout(() => {
+                message.style.opacity = '0';
+                setTimeout(() => message.remove(), 300);
+            }, 8000);
+        }
+    }
+    
+    // Show error message
+    function showErrorMessage() {
+        const message = document.createElement('div');
+        message.className = 'form-message error-message';
+        message.innerHTML = `
+            <div class="message-content">
+                <i class="fas fa-exclamation-circle"></i>
+                <div>
+                    <h4>Something went wrong!</h4>
+                    <p>Please try again or contact me directly at dineshkumar@example.com</p>
+                </div>
+            </div>
+        `;
+        
+        // Insert message above the form
+        const formWrapper = document.querySelector('.contact-form-wrapper');
+        if (formWrapper) {
+            // Remove any existing messages
+            const existingMessages = formWrapper.querySelectorAll('.form-message');
+            existingMessages.forEach(msg => msg.remove());
+            
+            // Insert new message
+            formWrapper.insertBefore(message, formWrapper.firstChild);
+            
+            // Scroll to message
+            message.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            // Auto-remove after 8 seconds
+            setTimeout(() => {
+                message.style.opacity = '0';
+                setTimeout(() => message.remove(), 300);
+            }, 8000);
+        }
     }
     
     // ==========================================

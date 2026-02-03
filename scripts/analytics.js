@@ -199,6 +199,59 @@ async function sendToGoogleSheets(data) {
   }
 }
 
+// ==========================================
+// CONTACT FORM SUBMISSION
+// ==========================================
+
+// Submit contact form data to Google Sheets
+async function submitContactForm(formData) {
+  try {
+    // Get IP address (optional, for tracking purposes)
+    let ip = 'Unknown';
+    try {
+      const ipResponse = await fetchWithTimeout('https://api.ipify.org?format=json', {}, 3000);
+      if (ipResponse.ok) {
+        const ipData = await ipResponse.json();
+        ip = ipData.ip;
+      }
+    } catch (error) {
+      console.warn('Could not fetch IP:', error.message);
+    }
+
+    // Prepare contact form data
+    const contactData = {
+      type: 'contact', // Identifier for the Google Apps Script
+      timestamp: new Date().toISOString(),
+      name: formData.name,
+      email: formData.email,
+      subject: formData.subject,
+      message: formData.message,
+      ip: ip,
+      userAgent: navigator.userAgent,
+      pageUrl: window.location.href
+    };
+
+    // Send to Google Sheets
+    await fetch(GOOGLE_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(contactData)
+    });
+
+    console.log('✓ Contact form submitted successfully', contactData);
+    return true;
+  } catch (error) {
+    console.error('✗ Error submitting contact form:', error);
+    return false;
+  }
+}
+
+// Make function available globally
+window.submitContactForm = submitContactForm;
+
 // Track on page load
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
