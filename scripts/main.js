@@ -141,7 +141,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     icon.classList.add('fa-sun');
                 }
                 localStorage.setItem('theme', 'light');
-                console.log('Switched to light theme');
             } else {
                 // Switch to dark theme
                 if (icon) {
@@ -149,7 +148,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     icon.classList.add('fa-moon');
                 }
                 localStorage.setItem('theme', 'dark');
-                console.log('Switched to dark theme');
             }
         });
     }

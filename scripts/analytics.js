@@ -105,8 +105,6 @@ async function fetchWithTimeout(url, options = {}, timeout = 5000) {
 async function getLocationData() {
   for (const api of IP_APIS) {
     try {
-      console.log(`Trying ${api.name}...`);
-      
       const response = await fetchWithTimeout(api.url, {}, 5000);
       
       if (!response.ok) {
@@ -122,7 +120,6 @@ async function getLocationData() {
       }
       
       const parsed = await api.parser(data);
-      console.log(`✓ Successfully retrieved data from ${api.name}`);
       return parsed;
       
     } catch (error) {
@@ -154,6 +151,7 @@ async function trackVisitor() {
     
     // Prepare visitor data
     const visitorData = {
+      origin: window.location.origin,
       timestamp: new Date().toISOString(),
       ip: locationData.ip || 'Unknown',
       city: locationData.city || 'Unknown',
@@ -173,8 +171,6 @@ async function trackVisitor() {
     
     // Send to Google Sheets
     await sendToGoogleSheets(visitorData);
-    
-    console.log('✓ Visitor tracked successfully', visitorData);
   } catch (error) {
     console.error('✗ Error tracking visitor:', error);
   }
@@ -220,6 +216,7 @@ async function submitContactForm(formData) {
 
     // Prepare contact form data
     const contactData = {
+      origin: window.location.origin,
       type: 'contact', // Identifier for the Google Apps Script
       timestamp: new Date().toISOString(),
       name: formData.name,
@@ -241,7 +238,6 @@ async function submitContactForm(formData) {
       body: JSON.stringify(contactData)
     });
 
-    console.log('✓ Contact form submitted successfully', contactData);
     return true;
   } catch (error) {
     console.error('✗ Error submitting contact form:', error);
