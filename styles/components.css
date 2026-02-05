@@ -514,7 +514,7 @@ body:hover .cursor-glow {
 
 .skill-progress {
   height: 100%;
-  background: linear-gradient(90deg, #a855f7, #3b82f6);
+  background: linear-gradient(135deg, var(--primary), #06b6d4);
   border-radius: var(--radius-lg);
   position: relative;
   transition: width 1.5s ease-out;
@@ -1605,21 +1605,21 @@ body:hover .cursor-glow {
   width: 60px;
   height: 60px;
   margin: 0 auto 1rem;
-  background: linear-gradient(135deg, #ec4899, #06b6d4);
+  background: linear-gradient(135deg, var(--primary), #06b6d4);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
   color: white;
-  box-shadow: 0 8px 16px rgba(236, 72, 153, 0.4);
+  box-shadow: 0 8px 16px rgba(0, 97, 255, 0.4);
 }
 
 .modal-showcase-header h2 {
   font-size: 1.75rem;
   font-weight: 700;
   margin: 0 0 0.5rem 0;
-  background: linear-gradient(135deg, #ec4899, #06b6d4);
+  background: linear-gradient(135deg, var(--primary), #06b6d4);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -1757,34 +1757,22 @@ body:hover .cursor-glow {
   width: 60px;
   height: 60px;
   margin: 0 auto 1rem;
-  background: linear-gradient(135deg, #ec4899, #06b6d4);
+  background: linear-gradient(135deg, var(--primary), #06b6d4);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
   color: white;
-  box-shadow: 0 8px 16px rgba(236, 72, 153, 0.4);
+  box-shadow: 0 8px 16px rgba(0, 97, 255, 0.4);
   animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    transform: scale(1);
-    box-shadow: 0 8px 16px rgba(236, 72, 153, 0.4);
-  }
-  50% {
-    transform: scale(1.05);
-    box-shadow: 0 12px 24px rgba(236, 72, 153, 0.5);
-  }
 }
 
 .modal-form-header h2 {
   font-size: 1.75rem;
   font-weight: 700;
   margin: 0 0 0.5rem 0;
-  background: linear-gradient(135deg, #ec4899, #06b6d4);
+  background: linear-gradient(135deg, var(--primary), #06b6d4);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
