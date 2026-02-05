@@ -2,37 +2,37 @@
    MODERN PORTFOLIO - MAIN STYLES
    ========================================== */
 
-/* CSS Variables */
+/* CSS Variables - Light Theme Only */
 :root {
-    /* Colors - Custom Sky Blue & Green Theme */
-    --primary: #38BDF8;
-    --primary-dark: #0EA5E9;
-    --primary-light: #7DD3FC;
+    /* Colors - Custom Blue Theme */
+    --primary: #0061ff;
+    --primary-dark: #0050d6;
+    --primary-light: #3384ff;
     --secondary: #22C55E;
     --accent: #F59E0B;
     
-    --bg-primary: #0F172A;
-    --bg-secondary: #111827;
-    --bg-tertiary: #1F2937;
-    --bg-card: #111827;
-    --header-bg: rgba(15, 23, 42, 0.95);
+    --bg-primary: #F8FAFC;
+    --bg-secondary: #FFFFFF;
+    --bg-tertiary: #f7f8f9;
+    --bg-card: #FFFFFF;
+    --header-bg: rgba(255, 255, 255, 0.95);
     
-    --text-primary: #E5E7EB;
-    --text-secondary: #D1D5DB;
-    --text-muted: #9CA3AF;
+    --text-primary: #0F172A;
+    --text-secondary: #334155;
+    --text-muted: #64748B;
     
-    --border: #1F2937;
-    --border-light: #374151;
+    --border: #E2E8F0;
+    --border-light: #CBD5E1;
     
     --success: #22C55E;
     --warning: #F59E0B;
     --error: #EF4444;
     
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, #38BDF8 0%, #0EA5E9 100%);
+    --gradient-primary: linear-gradient(135deg, #0061ff 0%, #0050d6 100%);
     --gradient-secondary: linear-gradient(135deg, #22C55E 0%, #16A34A 100%);
     --gradient-accent: linear-gradient(135deg, #F59E0B 0%, #EF4444 100%);
-    --gradient-hero: linear-gradient(135deg, #0EA5E9 0%, #38BDF8 100%);
+    --gradient-hero: linear-gradient(135deg, #0050d6 0%, #0061ff 100%);
     
     /* Fonts */
     --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -57,32 +57,13 @@
     --shadow-md: 0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
     --shadow-lg: 0 4px 8px -2px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
     --shadow-xl: 0 8px 16px -4px rgba(0, 0, 0, 0.1), 0 4px 8px -4px rgba(0, 0, 0, 0.08);
-    --shadow-glow: 0 0 20px rgba(56, 189, 248, 0.15);
+    --shadow-glow: 0 0 20px rgba(0, 97, 255, 0.15);
     --shadow-glow-green: 0 0 20px rgba(34, 197, 94, 0.15);
     
     /* Transitions */
     --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
     --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
     --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Light Theme */
-body.light-theme {
-    --bg-primary: #F8FAFC;
-    --bg-secondary: #FFFFFF;
-    --bg-tertiary: #E2E8F0;
-    --bg-card: #FFFFFF;
-    --header-bg: rgba(255, 255, 255, 0.95);
-    
-    --text-primary: #0F172A;
-    --text-secondary: #334155;
-    --text-muted: #64748B;
-    
-    --border: #E2E8F0;
-    --border-light: #CBD5E1;
-    
-    --shadow-glow: 0 0 20px rgba(56, 189, 248, 0.15);
-    --shadow-glow-green: 0 0 20px rgba(34, 197, 94, 0.15);
 }
 
 /* ==========================================

@@ -279,51 +279,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // ==========================================
-    // THEME TOGGLE - FIXED
-    // ==========================================
-    const themeToggle = document.getElementById('themeToggle');
-    const body = document.body;
-    
-    // Check for saved theme preference or default to dark
-    const currentTheme = localStorage.getItem('theme') || 'dark';
-    
-    // Apply saved theme on load
-    if (currentTheme === 'light') {
-        body.classList.add('light-theme');
-        if (themeToggle) {
-            const icon = themeToggle.querySelector('i');
-            if (icon) {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            }
-        }
-    }
-    
-    // Theme toggle click handler
-    if (themeToggle) {
-        themeToggle.addEventListener('click', function() {
-            body.classList.toggle('light-theme');
-            const icon = this.querySelector('i');
-            
-            if (body.classList.contains('light-theme')) {
-                // Switch to light theme
-                if (icon) {
-                    icon.classList.remove('fa-moon');
-                    icon.classList.add('fa-sun');
-                }
-                localStorage.setItem('theme', 'light');
-            } else {
-                // Switch to dark theme
-                if (icon) {
-                    icon.classList.remove('fa-sun');
-                    icon.classList.add('fa-moon');
-                }
-                localStorage.setItem('theme', 'dark');
-            }
-        });
-    }
-    
-    // ==========================================
     // BACK TO TOP BUTTON
     // ==========================================
     const backToTopBtn = document.getElementById('backToTop');

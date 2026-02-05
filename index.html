@@ -15,9 +15,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles/main.css?v=22">
-    <link rel="stylesheet" href="styles/components.css?v=22">
-    <link rel="stylesheet" href="styles/responsive.css?v=22">
+    <link rel="stylesheet" href="styles/main.css?v=34">
+    <link rel="stylesheet" href="styles/components.css?v=34">
+    <link rel="stylesheet" href="styles/responsive.css?v=34">
 </head>
 <body>
     <!-- Contact Form Popup Modal -->
@@ -29,17 +29,136 @@
                     <i class="fas fa-times"></i>
                 </button>
                 
-                <div class="modal-header">
-                    <div class="modal-icon">
-                        <i class="fas fa-paper-plane"></i>
+                <div class="modal-body-wide">
+                    <!-- Left Zone: Service Showcase -->
+                    <div class="modal-left-zone">
+                        <div class="modal-showcase-header">
+                            <div class="showcase-icon">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <h2>What I Build</h2>
+                            <p>Specialized expertise across the full development stack</p>
+                        </div>
+                        
+                        <div class="services-showcase">
+                            <!-- Full Stack Development -->
+                            <div class="showcase-item">
+                                <div class="showcase-item-icon">
+                                    <i class="fas fa-layer-group"></i>
+                                </div>
+                                <div class="showcase-item-content">
+                                    <h4>Full Stack Development</h4>
+                                    <div class="tech-stack">
+                                        <span class="tech-badge">React</span>
+                                        <span class="tech-badge">Next.js</span>
+                                        <span class="tech-badge">Node.js</span>
+                                        <span class="tech-badge">Rust</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- System Architecture -->
+                            <div class="showcase-item">
+                                <div class="showcase-item-icon">
+                                    <i class="fas fa-project-diagram"></i>
+                                </div>
+                                <div class="showcase-item-content">
+                                    <h4>System Architecture</h4>
+                                    <div class="tech-stack">
+                                        <span class="tech-badge">Microservices</span>
+                                        <span class="tech-badge">AWS</span>
+                                        <span class="tech-badge">PostgreSQL</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- API Development -->
+                            <div class="showcase-item">
+                                <div class="showcase-item-icon">
+                                    <i class="fas fa-plug"></i>
+                                </div>
+                                <div class="showcase-item-content">
+                                    <h4>API Development</h4>
+                                    <div class="tech-stack">
+                                        <span class="tech-badge">REST</span>
+                                        <span class="tech-badge">GraphQL</span>
+                                        <span class="tech-badge">Firebase</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Specialized Solutions -->
+                            <div class="showcase-item">
+                                <div class="showcase-item-icon">
+                                    <i class="fas fa-stethoscope"></i>
+                                </div>
+                                <div class="showcase-item-content">
+                                    <h4>Specialized VMS Solutions</h4>
+                                    <div class="tech-stack">
+                                        <span class="tech-badge">Custom Tools</span>
+                                        <span class="tech-badge">Analytics</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Code Optimization -->
+                            <div class="showcase-item">
+                                <div class="showcase-item-icon">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <div class="showcase-item-content">
+                                    <h4>Code Review & Optimization</h4>
+                                    <div class="tech-stack">
+                                        <span class="tech-badge">Performance</span>
+                                        <span class="tech-badge">Security</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Technical Consulting -->
+                            <div class="showcase-item">
+                                <div class="showcase-item-icon">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <div class="showcase-item-content">
+                                    <h4>Technical Consulting</h4>
+                                    <div class="tech-stack">
+                                        <span class="tech-badge">Strategy</span>
+                                        <span class="tech-badge">Mentoring</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="showcase-footer">
+                            <div class="stats-grid">
+                                <div class="stat-item">
+                                    <i class="fas fa-briefcase"></i>
+                                    <span>4+ Years</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-code"></i>
+                                    <span>15+ Projects</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-smile"></i>
+                                    <span>Happy Clients</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <h2>Let's Connect!</h2>
-                    <p>Have a project in mind or want to discuss opportunities? Drop me a message!</p>
-                </div>
-                
-                <div class="modal-body">
-                    <form class="contact-form" id="contactFormModal">
-                        <div class="form-row">
+                    
+                    <!-- Right Zone: Contact Form -->
+                    <div class="modal-right-zone">
+                        <div class="modal-form-header">
+                            <div class="form-header-icon">
+                                <i class="fas fa-paper-plane"></i>
+                            </div>
+                            <h2>Let's Connect!</h2>
+                            <p>Have a project in mind? Let's discuss how I can help bring your ideas to life.</p>
+                        </div>
+                        
+                        <form class="contact-form" id="contactFormModal">
                             <div class="form-group">
                                 <label for="modal-name">
                                     <i class="fas fa-user"></i>
@@ -47,6 +166,7 @@
                                 </label>
                                 <input type="text" id="modal-name" name="name" placeholder="John Doe" required>
                             </div>
+                            
                             <div class="form-group">
                                 <label for="modal-email">
                                     <i class="fas fa-envelope"></i>
@@ -54,34 +174,26 @@
                                 </label>
                                 <input type="email" id="modal-email" name="email" placeholder="john@example.com" required>
                             </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="modal-subject">
-                                <i class="fas fa-tag"></i>
-                                Subject
-                            </label>
-                            <input type="text" id="modal-subject" name="subject" placeholder="Project Inquiry" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="modal-message">
-                                <i class="fas fa-comment"></i>
-                                Message
-                            </label>
-                            <textarea id="modal-message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn-submit">
-                            <span>Send Message</span>
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                        
-                        <p class="modal-note">
-                            <i class="fas fa-lock"></i>
-                            Your information is secure and will not be shared.
-                        </p>
-                    </form>
+                            
+                            <div class="form-group">
+                                <label for="modal-message">
+                                    <i class="fas fa-comment"></i>
+                                    Message
+                                </label>
+                                <textarea id="modal-message" name="message" rows="6" placeholder="Tell me about your project..." required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn-submit">
+                                <span>Send Message</span>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                            
+                            <p class="modal-note">
+                                <i class="fas fa-lock"></i>
+                                Your information is secure and will not be shared.
+                            </p>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -106,9 +218,6 @@
                     <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
                 <div class="nav-actions">
-                    <button class="theme-toggle" id="themeToggle" title="Toggle theme">
-                        <i class="fas fa-moon"></i>
-                    </button>
                     <button class="btn-primary" id="openContactModal">Hire Me</button>
                     <button class="mobile-menu-toggle" id="mobileMenuToggle">
                         <i class="fas fa-bars"></i>
@@ -134,18 +243,19 @@
                     I build exceptional digital experiences with modern web technologies. 
                     Specialized in JavaScript, TypeScript, Rust, React.js, Next.js, and cloud infrastructure.
                 </p>
+                
                 <div class="hero-stats">
-                    <div class="stat-item">
-                        <span class="stat-number">4+</span>
-                        <span class="stat-label">Years Experience</span>
+                   <div class="stat-item">
+                        <i class="fas fa-briefcase"></i>
+                        <span>4+ Years</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">15+</span>
-                        <span class="stat-label">Projects Completed</span>
+                        <i class="fas fa-code"></i>
+                        <span>15+ Projects</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">40%</span>
-                        <span class="stat-label">Performance Boost</span>
+                        <i class="fas fa-smile"></i>
+                        <span>Happy Clients</span>
                     </div>
                 </div>
                 <div class="hero-actions">
@@ -530,6 +640,7 @@
                                 <li>Improved retention rates on key projects</li>
                                 <li>Collaborated on weather application with <strong>30%</strong> improvement in data retrieval speed</li>
                             </ul>
+                            <br />
                             <div class="tech-tags">
                                 <span class="tech-tag">JavaScript</span>
                                 <span class="tech-tag">React</span>
@@ -567,6 +678,7 @@
                                 <li>Collaborated with design team to ensure pixel-perfect UI implementation</li>
                                 <li>Optimized application performance resulting in faster load times</li>
                             </ul>
+                            <br />
                             <div class="tech-tags">
                                 <span class="tech-tag">JavaScript</span>
                                 <span class="tech-tag">React</span>
