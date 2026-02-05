@@ -15,11 +15,78 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles/main.css?v=17">
-    <link rel="stylesheet" href="styles/components.css?v=17">
-    <link rel="stylesheet" href="styles/responsive.css?v=17">
+    <link rel="stylesheet" href="styles/main.css?v=20">
+    <link rel="stylesheet" href="styles/components.css?v=20">
+    <link rel="stylesheet" href="styles/responsive.css?v=20">
 </head>
 <body>
+    <!-- Contact Form Popup Modal -->
+    <div class="contact-modal" id="contactModal">
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal-container">
+            <div class="modal-content">
+                <button class="modal-close" id="modalClose" aria-label="Close modal">
+                    <i class="fas fa-times"></i>
+                </button>
+                
+                <div class="modal-header">
+                    <div class="modal-icon">
+                        <i class="fas fa-paper-plane"></i>
+                    </div>
+                    <h2>Let's Connect!</h2>
+                    <p>Have a project in mind or want to discuss opportunities? Drop me a message!</p>
+                </div>
+                
+                <div class="modal-body">
+                    <form class="contact-form" id="contactFormModal">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="modal-name">
+                                    <i class="fas fa-user"></i>
+                                    Your Name
+                                </label>
+                                <input type="text" id="modal-name" name="name" placeholder="John Doe" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="modal-email">
+                                    <i class="fas fa-envelope"></i>
+                                    Your Email
+                                </label>
+                                <input type="email" id="modal-email" name="email" placeholder="john@example.com" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="modal-subject">
+                                <i class="fas fa-tag"></i>
+                                Subject
+                            </label>
+                            <input type="text" id="modal-subject" name="subject" placeholder="Project Inquiry" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="modal-message">
+                                <i class="fas fa-comment"></i>
+                                Message
+                            </label>
+                            <textarea id="modal-message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-submit">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                        
+                        <p class="modal-note">
+                            <i class="fas fa-lock"></i>
+                            Your information is secure and will not be shared.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Navigation Header -->
     <header class="header" id="header">
         <div class="container">
@@ -30,6 +97,7 @@
                 </div>
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
                     <li><a href="#about" class="nav-link">About</a></li>
                     <li><a href="#experience" class="nav-link">Experience</a></li>
                     <li><a href="#projects" class="nav-link">Projects</a></li>
@@ -41,7 +109,7 @@
                     <button class="theme-toggle" id="themeToggle" title="Toggle theme">
                         <i class="fas fa-moon"></i>
                     </button>
-                    <a href="#contact" class="btn-primary">Hire Me</a>
+                    <button class="btn-primary" id="openContactModal">Hire Me</button>
                     <button class="mobile-menu-toggle" id="mobileMenuToggle">
                         <i class="fas fa-bars"></i>
                     </button>
@@ -107,6 +175,161 @@
             <div class="decoration-circle circle-1"></div>
             <div class="decoration-circle circle-2"></div>
             <div class="decoration-circle circle-3"></div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">What I Offer</span>
+                <h2 class="section-title">My Services</h2>
+                <p class="section-subtitle">Specialized expertise to bring your ideas to life</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Service 1: Full Stack Development -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3 class="service-title">Full Stack Development</h3>
+                    <p class="service-description">
+                        Building complete, production-ready applications with modern tech stacks. 
+                        React/Next.js frontend seamlessly integrated with Fastify/Rust backend.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> React.js & Next.js applications</li>
+                        <li><i class="fas fa-check"></i> Node.js & Rust backend services</li>
+                        <li><i class="fas fa-check"></i> Real-time features & WebSockets</li>
+                        <li><i class="fas fa-check"></i> Server-side rendering (SSR)</li>
+                    </ul>
+                    <div class="service-outcome">
+                        <i class="fas fa-chart-line"></i>
+                        <span>40% faster load times on average</span>
+                    </div>
+                </div>
+
+                <!-- Service 2: System Architecture -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3 class="service-title">System Architecture & Design</h3>
+                    <p class="service-description">
+                        Designing scalable, maintainable systems with optimal database schemas 
+                        and high-performance server logic.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Microservices architecture</li>
+                        <li><i class="fas fa-check"></i> Database design & optimization</li>
+                        <li><i class="fas fa-check"></i> Cloud infrastructure (AWS/Azure)</li>
+                        <li><i class="fas fa-check"></i> Performance optimization</li>
+                    </ul>
+                    <div class="service-outcome">
+                        <i class="fas fa-chart-line"></i>
+                        <span>40% reduction in system response times</span>
+                    </div>
+                </div>
+
+                <!-- Service 3: API Development & Integration -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <h3 class="service-title">API Development & Integration</h3>
+                    <p class="service-description">
+                        Developing secure, well-documented REST and GraphQL APIs with seamless 
+                        third-party service integrations.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> RESTful API design</li>
+                        <li><i class="fas fa-check"></i> GraphQL implementation</li>
+                        <li><i class="fas fa-check"></i> Firebase & cloud services</li>
+                        <li><i class="fas fa-check"></i> Authentication & security</li>
+                    </ul>
+                    <div class="service-outcome">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Secure, scalable API solutions</span>
+                    </div>
+                </div>
+
+                <!-- Service 4: VMS Solutions -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <h3 class="service-title">Specialized VMS Solutions</h3>
+                    <p class="service-description">
+                        Custom Veterinary Management Systems with advanced calculators and 
+                        specialized tools for healthcare professionals.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Custom VMS development</li>
+                        <li><i class="fas fa-check"></i> Medical calculators & tools</li>
+                        <li><i class="fas fa-check"></i> Patient management systems</li>
+                        <li><i class="fas fa-check"></i> Reporting & analytics</li>
+                    </ul>
+                    <div class="service-outcome">
+                        <i class="fas fa-chart-line"></i>
+                        <span>40% boost in sales efficiency</span>
+                    </div>
+                </div>
+
+                <!-- Service 5: Code Review & Optimization -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="service-title">Code Review & Optimization</h3>
+                    <p class="service-description">
+                        Comprehensive code audits, performance optimization, and best practices 
+                        implementation for existing projects.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Code quality assessment</li>
+                        <li><i class="fas fa-check"></i> Performance profiling</li>
+                        <li><i class="fas fa-check"></i> Security audits</li>
+                        <li><i class="fas fa-check"></i> Refactoring & modernization</li>
+                    </ul>
+                    <div class="service-outcome">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Clean, maintainable codebases</span>
+                    </div>
+                </div>
+
+                <!-- Service 6: Technical Consulting -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="service-title">Technical Consulting</h3>
+                    <p class="service-description">
+                        Strategic technology guidance, architecture reviews, and technical 
+                        leadership for your development projects.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Technology stack selection</li>
+                        <li><i class="fas fa-check"></i> Architecture planning</li>
+                        <li><i class="fas fa-check"></i> Team mentoring</li>
+                        <li><i class="fas fa-check"></i> Best practices implementation</li>
+                    </ul>
+                    <div class="service-outcome">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Strategic technical guidance</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="services-cta">
+                <h3>Ready to start your project?</h3>
+                <p>Let's discuss how I can help bring your ideas to life</p>
+                <button class="btn-primary btn-lg" id="openContactModalFromServices">
+                    <i class="fas fa-rocket"></i>
+                    Let's Work Together
+                </button>
+            </div>
         </div>
     </section>
 
@@ -858,6 +1081,6 @@
 
     <!-- Scripts -->
     <script src="scripts/analytics.js?v=2"></script>
-    <script src="scripts/main.js?v=9"></script>
+    <script src="scripts/main.js?v=11"></script>
 </body>
 </html>

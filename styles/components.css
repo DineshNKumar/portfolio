@@ -1447,8 +1447,262 @@ body:hover .cursor-glow {
 }
 
 /* ==========================================
-   HERO SECTION
+   CONTACT FORM POPUP MODAL
    ========================================== */
+
+.contact-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.contact-modal.active {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    cursor: pointer;
+}
+
+.modal-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    overflow-y: auto;
+    
+    /* Custom scrollbar styling */
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+}
+
+/* Webkit browsers (Chrome, Safari, Edge) - Modal container scrollbar */
+.modal-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.modal-container::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+}
+
+.modal-container::-webkit-scrollbar-thumb:hover {
+    background: var(--text-tertiary);
+}
+
+.modal-content {
+    position: relative;
+    background: var(--bg-card);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border);
+    max-width: 600px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    animation: modalSlideIn 0.4s ease;
+    transform-origin: center;
+    
+    /* Custom scrollbar styling */
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+}
+
+/* Webkit browsers (Chrome, Safari, Edge) - Custom scrollbar */
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: var(--text-tertiary);
+}
+
+/* Alternative: Hide scrollbar completely (uncomment if preferred) */
+/* 
+.modal-content {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.modal-content::-webkit-scrollbar {
+    display: none;
+}
+*/
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.modal-close:hover {
+    background: var(--danger);
+    color: white;
+    border-color: var(--danger);
+    transform: rotate(90deg);
+}
+
+.modal-header {
+    padding: 3rem 2.5rem 2rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+}
+
+.modal-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(135deg, var(--primary), var(--success));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    box-shadow: 0 8px 16px rgba(56, 189, 248, 0.3);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 8px 16px rgba(56, 189, 248, 0.3);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 12px 24px rgba(56, 189, 248, 0.4);
+    }
+}
+
+.modal-header h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    background: linear-gradient(135deg, var(--primary), var(--success));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.modal-header p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.modal-body {
+    padding: 2.5rem;
+}
+
+.modal-note {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: center;
+    justify-content: center;
+}
+
+.modal-note i {
+    color: var(--success);
+}
+
+/* Modal Responsive */
+@media (max-width: 640px) {
+    .modal-container {
+        padding: 1rem;
+    }
+    
+    .modal-content {
+        max-height: 95vh;
+    }
+    
+    .modal-header {
+        padding: 2.5rem 1.5rem 1.5rem;
+    }
+    
+    .modal-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+    
+    .modal-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .modal-body {
+        padding: 1.5rem;
+    }
+    
+    .modal-close {
+        top: 1rem;
+        right: 1rem;
+        width: 36px;
+        height: 36px;
+    }
+}
 
 /* ==========================================
    RESPONSIVE STYLES
@@ -1668,5 +1922,213 @@ body:hover .cursor-glow {
     .education-period,
     .education-description {
         text-align: center;
+    }
+}
+
+/* ==========================================
+   SERVICES SECTION
+   ========================================== */
+
+.services-section {
+    background: var(--bg-secondary);
+    position: relative;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.service-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    padding: 2.5rem 2rem;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--success));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover::before {
+    transform: scaleX(1);
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(56, 189, 248, 0.15);
+    border-color: var(--primary);
+}
+
+.service-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(16, 185, 129, 0.1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: var(--primary);
+    transition: all 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.1) rotate(5deg);
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(16, 185, 129, 0.2));
+}
+
+.service-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+    line-height: 1.3;
+}
+
+.service-description {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+    flex: 1;
+}
+
+.service-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.service-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.service-features li i {
+    color: var(--success);
+    font-size: 0.875rem;
+    flex-shrink: 0;
+}
+
+.service-outcome {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    margin-top: auto;
+}
+
+.service-outcome i {
+    color: var(--success);
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.service-outcome span {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+/* Services CTA */
+.services-cta {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: var(--bg-card);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+}
+
+.services-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.05), rgba(16, 185, 129, 0.05));
+    z-index: 0;
+}
+
+.services-cta h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    background: linear-gradient(135deg, var(--primary), var(--success));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    z-index: 1;
+}
+
+.services-cta p {
+    color: var(--text-secondary);
+    font-size: 1.125rem;
+    margin: 0 0 2rem 0;
+    position: relative;
+    z-index: 1;
+}
+
+.services-cta .btn-primary {
+    position: relative;
+    z-index: 1;
+}
+
+/* Responsive Services */
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .service-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .service-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.75rem;
+    }
+    
+    .service-title {
+        font-size: 1.25rem;
+    }
+    
+    .services-cta h3 {
+        font-size: 1.5rem;
+    }
+    
+    .services-cta p {
+        font-size: 1rem;
     }
 }

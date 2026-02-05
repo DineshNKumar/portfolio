@@ -5,6 +5,177 @@
 document.addEventListener('DOMContentLoaded', function() {
     
     // ==========================================
+    // CONTACT FORM POPUP MODAL
+    // ==========================================
+    const contactModal = document.getElementById('contactModal');
+    const modalClose = document.getElementById('modalClose');
+    const modalOverlay = document.getElementById('modalOverlay');
+    const contactFormModal = document.getElementById('contactFormModal');
+    
+    // Show modal on page load with delay
+    function showContactModal() {
+        // Check if user has seen the modal before (in this session)
+        const hasSeenModal = sessionStorage.getItem('contactModalShown');
+        
+        if (!hasSeenModal) {
+            setTimeout(() => {
+                contactModal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+                sessionStorage.setItem('contactModalShown', 'true');
+            }, 2000); // Show after 2 seconds
+        }
+    }
+    
+    // Close modal function
+    function closeContactModal() {
+        contactModal.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+    }
+    
+    // Close modal on close button click
+    if (modalClose) {
+        modalClose.addEventListener('click', closeContactModal);
+    }
+    
+    // Close modal on overlay click
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', closeContactModal);
+    }
+    
+    // Close modal on Escape key press
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && contactModal.classList.contains('active')) {
+            closeContactModal();
+        }
+    });
+    
+    // Handle modal contact form submission
+    if (contactFormModal) {
+        contactFormModal.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Get the submit button
+            const submitBtn = contactFormModal.querySelector('.btn-submit');
+            const originalBtnContent = submitBtn.innerHTML;
+            
+            // Disable button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span>Sending...</span><i class="fas fa-spinner fa-spin"></i>';
+            
+            try {
+                // Get form data
+                const formData = new FormData(contactFormModal);
+                const data = Object.fromEntries(formData);
+                
+                // Send to Google Sheets using analytics.js function
+                if (typeof window.submitContactForm === 'function') {
+                    await window.submitContactForm(data);
+                }
+                
+                // Show success message in modal
+                showModalSuccessMessage();
+                
+                // Reset form
+                contactFormModal.reset();
+                
+                // Close modal after 3 seconds
+                setTimeout(() => {
+                    closeContactModal();
+                }, 3000);
+                
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                showModalErrorMessage();
+            } finally {
+                // Re-enable button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnContent;
+            }
+        });
+    }
+    
+    // Show success message in modal
+    function showModalSuccessMessage() {
+        const message = document.createElement('div');
+        message.className = 'form-message success-message';
+        message.innerHTML = `
+            <div class="message-content">
+                <i class="fas fa-check-circle"></i>
+                <div>
+                    <h4>Message Sent Successfully!</h4>
+                    <p>Thank you for reaching out! I'll get back to you within 24 hours.</p>
+                </div>
+            </div>
+        `;
+        
+        // Insert message at the top of modal body
+        const modalBody = document.querySelector('.modal-body');
+        if (modalBody) {
+            // Remove any existing messages
+            const existingMessages = modalBody.querySelectorAll('.form-message');
+            existingMessages.forEach(msg => msg.remove());
+            
+            // Insert new message
+            modalBody.insertBefore(message, modalBody.firstChild);
+            
+            // Scroll to message
+            message.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    }
+    
+    // Show error message in modal
+    function showModalErrorMessage() {
+        const message = document.createElement('div');
+        message.className = 'form-message error-message';
+        message.innerHTML = `
+            <div class="message-content">
+                <i class="fas fa-exclamation-circle"></i>
+                <div>
+                    <h4>Something went wrong!</h4>
+                    <p>Please try again or contact me directly at dineshkumar@example.com</p>
+                </div>
+            </div>
+        `;
+        
+        // Insert message at the top of modal body
+        const modalBody = document.querySelector('.modal-body');
+        if (modalBody) {
+            // Remove any existing messages
+            const existingMessages = modalBody.querySelectorAll('.form-message');
+            existingMessages.forEach(msg => msg.remove());
+            
+            // Insert new message
+            modalBody.insertBefore(message, modalBody.firstChild);
+            
+            // Scroll to message
+            message.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    }
+    
+    // Show modal on page load
+    showContactModal();
+    
+    // Reopen modal with "Hire Me" button
+    const openContactModalBtn = document.getElementById('openContactModal');
+    if (openContactModalBtn) {
+        openContactModalBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            contactModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    }
+    
+    // Reopen modal from Services section "Let's Work Together" button
+    const openContactModalFromServicesBtn = document.getElementById('openContactModalFromServices');
+    if (openContactModalFromServicesBtn) {
+        openContactModalFromServicesBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            contactModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    }
+    
+    // ==========================================
     // GLASSY CURSOR EFFECT (Apple-style)
     // ==========================================
     const cursorGlow = document.createElement('div');
