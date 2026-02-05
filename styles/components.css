@@ -1967,11 +1967,11 @@ body:hover .cursor-glow {
   }
 
   .timeline::before {
-    left: 10px;
+    left: -4px;
   }
 
   .timeline-item {
-    padding-left: 40px;
+    padding-left: 0px;
   }
 
   .timeline-marker {
