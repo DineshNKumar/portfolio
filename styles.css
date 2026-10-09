@@ -108,3 +108,5 @@ time { color: var(--muted); font-size: 14px; white-space: nowrap; font-style: it
     .skills { grid-template-columns: 1fr; }
     .skills dt { border-bottom: 0; padding-bottom: 0; }
 }
+
+#education { padding-top: 56px; }
